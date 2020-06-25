@@ -1,0 +1,30 @@
+{
+  "name": "part9",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ts-node": "ts-node",
+    "calculateBmi": "ts-node bmicalculator.ts",
+    "calculateExercise": "ts-node exerciseCalculator.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annovo/fullstackopen-part9.git"
+  },
+  "author": "An Novoselov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/annovo/fullstackopen-part9/issues"
+  },
+  "homepage": "https://github.com/annovo/fullstackopen-part9#readme",
+  "devDependencies": {
+    "@types/node": "^14.0.14",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
