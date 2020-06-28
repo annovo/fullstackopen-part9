@@ -3,21 +3,21 @@ interface bmiValues {
   weight: number;
 }
 
-const parseArguments = (args: Array<string>): bmiValues => {
-  if (args.length < 4) throw new Error('Not enough arguments');
-  if (args.length > 4) throw new Error('Too many arguments');
+export const parseArguments = (heightString: unknown, weightString: unknown): bmiValues => {
+  // if (args.length < 4) throw new Error('Not enough arguments');
+  // if (args.length > 4) throw new Error('Too many arguments');
 
-  const height = Number(args[2]);
-  const weight = Number(args[3]);
+  const height = Number(heightString);
+  const weight = Number(weightString);
 
-  if(!isNaN(height) && !isNaN(weight)) {
-    return { height, weight }
+  if(!isNaN(height) && !isNaN(weight) && weight !== 0 && height !== 0) {
+    return { height, weight };
   } else {
-    throw new Error('Values should be numbers');
+    throw new Error('malformatted parameters');
   }
-}
+};
 
-const calculateBmi = (height: number, weight: number): string =>{
+export const calculateBmi = (height: number, weight: number): string =>{
   const heightInMetres = height / 100;
   const bmi = weight / (Math.pow(heightInMetres, 2));
   switch(true) {
@@ -40,11 +40,4 @@ const calculateBmi = (height: number, weight: number): string =>{
     default: 
       return 'Error';
   }
-}
-
-try {
-  const { height, weight } = parseArguments(process.argv);
-  console.log(calculateBmi(height, weight));
-} catch(e) {
-  console.log('Error: ', e.message);
-}
+};
