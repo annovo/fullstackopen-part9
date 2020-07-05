@@ -1,10 +1,11 @@
-POST http://localhost:3001/api/patients
+POST http://localhost:3001/api/patients/d2773598-f723-11e9-8f0b-362b9e155667/entries
 Content-Type: application/json
 
 {
-  "name": "Martha",
-  "dateOfBirth": "1992-07-19",
-  "gender": "male",
-  "occupation": "Housewife",
-  "ssn": "1233-442"
+    "date": "2019-08-05",
+    "type": "Hospital",
+    "specialist": "MD House",
+    "employerName": "HyPD",
+    "diagnosisCodes": ["M51.2", "S62.5"],
+    "description": "Patient mistakenly found himself in a nuclear plant waste site without protection gear. Very minor radiation poisoning. "
 }
