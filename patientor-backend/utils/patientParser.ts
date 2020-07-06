@@ -1,4 +1,4 @@
-import { Gender, Entry } from '../types';
+import { Gender, Entry } from "../types";
 //import { validate, clean } from 'parse-ssn';
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -6,11 +6,11 @@ import { Gender, Entry } from '../types';
 enum EntriesType {
   HealthCheck = "HealthCheck",
   Hospital = "Hospital",
-  OccupationalHealthcare = "OccupationalHealthcare"
+  OccupationalHealthcare = "OccupationalHealthcare",
 }
 
 export const isString = (arg: unknown): arg is string => {
-  return typeof arg === 'string';
+  return typeof arg === "string";
 };
 
 export const isDate = (arg: string): boolean => {
@@ -29,49 +29,48 @@ export const isEntry = (entryType: any): entryType is EntriesType => {
 // };
 
 export const parseString = (str: unknown): string => {
-  if(!str || !isString(str)) {
+  if (!str || !isString(str)) {
     throw new Error(`Incorrect or missing argument`);
   }
   return str;
 };
 
 export const parseDate = (date: unknown): string => {
-  if(!date || !isString(date) || !isDate(date)) {
+  if (!date || !isString(date) || !isDate(date)) {
     throw new Error(`Incorrect or missing argument date`);
   }
   return date;
 };
 
 export const parseGender = (gender: any): Gender => {
-  if(!gender || !isGender(gender)) {
-    throw new Error('Invalid or missing parameter gender');
+  if (!gender || !isGender(gender)) {
+    throw new Error("Invalid or missing parameter gender");
   }
   return gender;
 };
 
 export const parseSsn = (ssn: any): string => {
-  if(!ssn || !isString(ssn)){
-    throw new Error('Invalid or missing ssn');
+  if (!ssn || !isString(ssn)) {
+    throw new Error("Invalid or missing ssn");
   }
   return ssn;
 };
 
-export const parseEntries = (entries: any): Entry[] =>{
-  if(!entries) {
+export const parseEntries = (entries: any): Entry[] => {
+  if (!entries) {
     entries = [];
   }
-  if(Array.isArray(entries)) {
-    entries.forEach(e => {
+  if (Array.isArray(entries)) {
+    entries.forEach((e) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      if(!isEntry(e.type)){
+      if (!isEntry(e.type)) {
         throw new Error("Invalid or missing type of entry");
       }
     });
   } else {
-    throw new Error('Invalid type of entries, should be an array');
+    throw new Error("Invalid type of entries, should be an array");
   }
-  
+
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 };
-
